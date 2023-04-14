@@ -14,6 +14,11 @@ foreach(_typesupport ${_typesupports})
 endforeach()
 
 find_package(ament_cmake_core QUIET REQUIRED)
+
+ament_register_extension(
+  "rosidl_write_generator_arguments_extensions"
+  "rosidl_typesupport_cpp"
+  "rosidl_typesupport_cpp_write_arguments.cmake")
 ament_register_extension(
   "rosidl_generate_idl_interfaces"
   "rosidl_typesupport_cpp"

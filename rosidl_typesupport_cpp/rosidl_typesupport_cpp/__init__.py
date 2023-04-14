@@ -15,6 +15,12 @@
 from rosidl_cmake import generate_files
 
 
+def get_template_mapping():
+    return {
+        'idl__type_support.cpp.em': '%s__type_support.cpp',
+    }
+
+
 def generate_cpp(generator_arguments_file, type_supports):
     """
     Generate the c++ type support to handle ROS messages.
@@ -22,9 +28,7 @@ def generate_cpp(generator_arguments_file, type_supports):
     :param generator_arguments_file: Path location of the file containing the generator arguments
     :param type_support: List of type supports to be used
     """
-    mapping = {
-        'idl__type_support.cpp.em': '%s__type_support.cpp',
-    }
+    mapping = get_template_mapping()
     return generate_files(
         generator_arguments_file, mapping,
         additional_context={'type_supports': type_supports})
